@@ -27,7 +27,7 @@ a {
     width: 270px;
     height: 680px;
     text-align: center;
-    margin-right: 430px;
+    margin-right: 300px;
 }
 
 .logo {
@@ -66,26 +66,46 @@ p {
 
 .icons {
     float: left;
-    width: 200  px;
+    width: 200px;
     height: 20px;
-    margin: 50px 0 150px 200px;
+    margin: 50px 0 20px 330px;
 
 }
 
 .icons a {
-    color: #a5e0e8;
+    color: #333333;
     margin: 5px;
 }
 
 .icons a:hover {
-    color:  #333333;
+    color: #a5e0e8;
 }
 
+.authorize {
+    float: left;
+    width: 300px;
+    height: 50px;
+    margin: 0 0 120px 250px;
+    text_align: right;
+}
+
+.authorize a {
+    font-family: Gabriola;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333333;
+}
+
+.authorize a:hover {
+    color: #a5e0e8;
+}
 
 .buyNow {
     float: left;
     width: 300px;
     height: 400px;
+    margin-left: 130px;
     text-align: left;
     color: #333333;
 }
@@ -195,6 +215,20 @@ p {
     text-align: left;
 }
 
+.blockHeader a {
+    color:  #636262;
+    font-family: Roboto;
+    color:  #636262;
+    font-size: 22px;
+    line-height: 80px;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.blockHeader a:hover {
+    color:  #a5e0e8;
+}
+
 .block {
     float: left;
     width: 30%;
@@ -253,6 +287,99 @@ p {
     font-size: 14px;
     font-weight: 900;
     font-style: italic;
+}
+
+.blockId {
+    float: left;
+    width: 100%;
+    min-height: 650px;
+    margin: 0 5% 20px 0;
+}
+
+.imageId {
+    float: left;
+    width: 300px;
+    height: 300px;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+.imageId:hover {
+    background-color: #a5e0e8;
+}
+
+.imageId img {
+    width: 95%;
+    height: 95%;
+    margin: 2.5%;
+}
+
+
+.description {
+    float: left;
+    width: 510px;
+    min-height: 290px;
+    margin-left: 20px;
+    background-color: #f8f8f8;
+    padding: 5px 20px;
+    font-family: Roboto;
+    color:  #333333;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 22px;
+    text-align: left;
+}
+
+h3 {
+    font-family: Roboto;
+    color:  #333333;
+    font-size: 22px;
+    font-weight: 900;
+    font-style: italic;
+    line-height: 22px;
+    text-align: center;
+}
+
+.priceId {
+    float: left;
+    width: 100%;
+    height: 50px;
+    margin: 2px 4px 0;
+    font-family: Roboto;
+    color:  #333333;
+    font-size: 22px;
+    line-height: 22px;
+    font-weight: 900;
+    font-style: italic;
+    text-align: right;
+}
+
+.priceId p {
+    font-family: Roboto;
+    color:  #e24602;
+    text-decoration: line-through;
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    margin: 4px 4px 0;
+}
+
+.description a{
+    margin: 2.5px 50px;
+    padding: 10px 50px;
+    font-family: Gabriola;
+    color:  #000000;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 50px;
+    text-align: center;
+    background-color: #a5e0e8;
+}
+
+.description a:hover {
+    color:  #ffffff;
+    background-color: #333333;
 }
 
 .brand {
@@ -436,7 +563,6 @@ input {
 button {
     height: 32px;
     width: 70px;
-    text-align: center;
     margin-left: -4px;
     background-color: #000000;
     font-family: Roboto;

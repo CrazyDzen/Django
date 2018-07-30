@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+
+{% block page_title %}
+    Тедди
+{% endblock %}
+{% block page_content %}
+    <div class="blockHeader">Тедди</div>
+    {% for item in product %}
+    <div class="block">
+        <a href="../good{{ item.id }}">
+            <img src="/media/{{ item.image }}">
+            <div class="nameToys">{{ item.name }}</div>
+            <div class="price">&#8381; {{ item.cost }}</div>
+        </a>
+    </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'master.html' %}
+
+{% block page_title %}
+    {{ product.name }}
+{% endblock %}
+{% block page_content %}
+    <div class="blockHeader">
+        {% for item in category %}
+        {% if item.id == product.category_id %}
+        <a href="../group{{ item.id }}">{{ item.name }}</a> /
+        {% endif %}
+        {% endfor %}
+        {{ product.name }}
+    </div>
+    <div class="blockId">
+        <a href="/media/{{ product.image }}" target="_blank">
+            <div class="imageId"><img src="/media/{{ product.image }}"></div>
+        </a>
+        <div class="description">
+            <h3>Описание</h3>
+            <div>{{ product.content }}<div>
+                <div class="priceId">&#8381; {{ product.cost }} <br><p></p></div>
+            <a href="#">купить</a>
+        </div>
+    </div>
+{% endblock %}
