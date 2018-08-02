@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block page_title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'products/style_control.css' %}">
+</head>
+<body>
+    <div class="header">
+        <div class="inside">
+            <div class="welcome">
+                Добро пожаловать, UserName!
+            </div>
+            <div class="exit">
+                <a href="{% url 'products:list' %}">на главную</a>
+            </div>
+
+            <div class="options">
+                <a href="#"><div class="snap">Профиль</div></a>
+                <a href="{% url 'products:product' %}"><div class="snap">Товары</div></a>
+                <a href="{% url 'products:edit' %}"><div class="snap">Добавить новый товар</div></a>
+            </div>
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="inside">
+            {% block page_content %}{% endblock %}
+        </div>
+    </div>
+    <div class="footer">
+        <div class="inside">
+            &#169 2018 ToysShop - Все права защищены
+        </div>
+    </div>
+</body>
+
+</html>

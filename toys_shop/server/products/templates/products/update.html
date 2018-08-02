@@ -1,0 +1,22 @@
+{% extends 'changes.html' %}
+
+{% block page_title %}
+    Редактировать товар
+{% endblock %}
+{% block page_content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for err in form.not_field_errors %}
+        <div class="blockErr">
+            <span>{{ err }}</span>
+        </div>
+        {% endfor %}
+        {% for field in form %}
+        <div class="block">
+            <div class="lineName"><label for="{{ field.name }}">{{ field.label }}</label></div>
+            <div class="lineValue">{{ field }}</div>
+        </div>
+        {% endfor %}
+        <input class="btn" type="submit" value="Отправить">
+    </form>
+{% endblock %}
