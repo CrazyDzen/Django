@@ -1,0 +1,21 @@
+{% extends 'master.html' %}
+
+{% block page_title %}
+    {{ group.name }}
+{% endblock %}
+{% block page_content %}
+    <div class="blockHeader">{{group.name}}</div>
+    {% if product|length > 0 %}
+    {% for item in product %}
+    <div class="block">
+        <a href="{% url 'products:description' item.id %}">
+            <img src="/media/{{ item.image }}">
+            <div class="nameToys">{{ item.name }}</div>
+            <div class="price">&#8381; {{ item.cost }}</div>
+        </a>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>ghjgkg</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'changes.html' %}
+
+{% block page_title %}
+    Все товары
+{% endblock %}
+{% block page_content %}
+    {% for item in query %}
+    <div class="blockId">
+        <div class="toy">
+            <a href="{% url 'products:update' item.id %}">
+                <img src="/media/{{ item.image }}">
+                <div class="nameToys">{{ item.name }}</div>
+                <div class="price">&#8381; {{ item.cost }}<p></p></div>
+            </a>
+        </div>
+        <div class="delete"><a href="{% url 'products:delete' item.id %}">Удалить</a></div>
+    </div>
+    {% endfor %}
+{% endblock %}
