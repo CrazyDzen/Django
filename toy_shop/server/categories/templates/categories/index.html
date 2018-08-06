@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block page_title %}
+    мягкая игрушка
+{% endblock %}
+
+{% block page_content %}
+    <div class="blockHeader">Тедди</div>
+    <div id="product-list"></div>
+{% endblock %}
+{% block page_js %}
+<script type="text/javascript" src="{% static 'categories/index.js' %}"></script>
+<script>
+    axios.get('http://127.0.0.1:8000/products/api/').then(renderData)
+</script>
+{% endblock %}

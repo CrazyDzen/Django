@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block page_title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+          integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'products/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="headerInside">
+            <div class="left">
+                <div class="logo"><img src="{% static 'products/img/logo.png' %}"></div>
+                <div class="welcome">
+                    <h1>ДОБРО ПОЖАЛОВАТЬ!</h1>
+                    <p>В нашем интернет магазине вы сможете приобрести мягкие игрушки любых форм и размеров.</p>
+                </div>
+            </div>
+            <div class="icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="authorize">
+                {% if request.user.is_authenticated %}
+                {{ user }}<br>
+                <a href="#">Профиль</a>/
+                <a href="{% url 'products:product' %}">Управление</a>/
+                <a href="{% url 'securities:logout' %}">Выход</a>
+                {% else %}
+                <a href="{% url 'securities:login' %}">Вход</a> /
+                <a href="{% url 'securities:register' %}">Регистрация</a>
+                {% endif %}
+            </div>
+            <div class="buyNow">
+                <h1>ПРЕДЛОЖЕНИЕ МЕСЯЦА</h1>
+                <p>Мишка "Тедди" станет отличным подарком в различных ситуациях.
+                    Только до конца месяца действует специальное предложение</p>
+                <a href="#">купить сейчас</a>
+            </div>
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="mainInside">
+            <div class="menu">
+                <div class="menuHeader">МЕНЮ</div>
+                <a href="{% url 'categories:list' %}"><div class="link">Главная</div></a>
+                {% for item in category %}
+                <a href="{% url 'products:group' item.id %}"><div class="link">{{ item.name }}</div></a>
+                {% endfor %}
+                <a href="#"><div class="link">Распродажа</div></a>
+                <a href="#"><div class="link">Контакты</div></a>
+                <div class="image"><img src="{% static 'products/img/menu.jpg' %}"></div>
+            </div>
+            <div class="products">
+                <div>
+                    {% block page_content %}{% endblock %}
+                    {% block page_js %}{% endblock %}
+                </div>
+            </div>
+            <div class="brand">
+                <img src="{% static 'products/img/brand_1.png' %}">
+                <img src="{% static 'products/img/brand_3.png' %}">
+                <img src="{% static 'products/img/brand_2.png' %}">
+            </div>
+            <a href="#"><div class="instagram">
+                <div class="inscription"><i class="fab fa-instagram fa-lg"></i>
+                    Instagram feed: &#35;teddytoys</div>
+                <div class="instImage"><img src="{% static 'products/img/teddy_1.jpg' %}"></div>
+                <div class="instImage"><img src="{% static 'products/img/teddy_3.jpg' %}"></div>
+                <div class="instImage"><img src="{% static 'products/img/teddy_2.jpg' %}"></div>
+                <div class="instImage"><img src="{% static 'products/img/teddy_5.jpg' %}"></div>
+                <div class="instImage"><img src="{% static 'products/img/teddy_4.jpg' %}"></div>
+                <div class="instImage"><img src="{% static 'products/img/teddy_6.jpg' %}"></div>
+            </div></a>
+            <div class="social">
+                <a href="#"><div class="facebook"><i class="fab fa-facebook-f fa-5x"></i></div></a>
+                <a href="#"><div class="twitter"><i class="fab fa-twitter fa-5x"></i></div></a>
+                <a href="#"><div class="pinterest"><i class="fab fa-pinterest fa-5x"></i></div></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footerInside">
+            <div class="footerBlock">
+                <h2>Категории</h2>
+                <a href="#">На главную</a><br>
+                <a href="#">О нас</a><br>
+                <a href="#">Магазин</a><br>
+                <a href="#">В будущем</a><br>
+                <a href="#">Новая колекция</a><br>
+                <a href="#">Блог</a><br>
+                <a href="#">Контакты</a>
+            </div>
+            <div class="footerBlock">
+                <h2>Аккаунты</h2>
+                <a href="#">Ваш аккаунт</a><br>
+                <a href="#">Профиль</a><br>
+                <a href="#">Адрес</a><br>
+                <a href="#">Дисконт</a><br>
+                <a href="#">История</a><br>
+                <a href="#">Правила поиска</a>
+            </div>
+            <div class="footerBlock">
+                <h2>Поддержка</h2>
+                <a href="#">Карта сайта</a><br>
+                <a href="#">Правила поиска</a><br>
+                <a href="#">Поиск</a><br>
+                <a href="#">Мобильная версия</a><br>
+                <a href="#">Наши контакты</a><br>
+                <a href="#">Как нас найти</a>
+            </div>
+            <div class="footerBlock">
+                <h2>Информация</h2>
+                <p>Уже тысчи людей подписались на нас:</p>
+                <form action="">
+                    <input id="mail" placeholder="example@mail.ru">
+                    <button type="submit">Отправить</button>
+                </form>
+                <div class="pay">
+                    <img src="{% static 'products/img/icons/americanexpress.png' %}">
+                    <img src="{% static 'products/img/icons/mastercard.png' %}">
+                    <img src="{% static 'products/img/icons/maestro.png' %}">
+                    <img src="{% static 'products/img/icons/paypal.png' %}">
+                    <img src="{% static 'products/img/icons/qiwi.png' %}">
+                    <img src="{% static 'products/img/icons/visa.png' %}">
+                </div>
+            </div>
+            <div class="footerBlock">
+                <h2>О нас</h2>
+                <p>Мы продали уже более десяти тысяч мягких игрушек, и наши клиенты всегда возращаются к нам.</p>
+                <p>Тулефон: 5464546456</p>
+                <p>e-mail: hgj@hbjkj.ru</p>
+            </div>
+        </div>
+    </div>
+    <div class="footerEnd">
+        <div class="footerInside">
+            &#169 2018 ToysShop - Все права защищены
+            <div class="iconsTwo">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#"><i class="fab fa-tumblr"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
