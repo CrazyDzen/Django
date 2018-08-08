@@ -82,8 +82,6 @@ a:hover {
     background-color: #a5e0e8;
 }
 
-
-
 .block {
     float: left;
     width: 60%;
@@ -117,6 +115,15 @@ a:hover {
 
 .blockId:nth-child(4n) {
     margin-right: 0;
+}
+
+.pagination {
+    float: left;
+    width: 100%;
+    height: 50px;
+    background-color: #f8f8f8;
+    text-align: center;
+    line-height: 50px;
 }
 
 .toy {

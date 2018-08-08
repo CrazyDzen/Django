@@ -1,0 +1,15 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block page_title %}
+    {{ product.name }}
+{% endblock %}
+{% block page_content %}
+     <div id="product-list"></div>
+{% endblock %}
+{% block page_js %}
+<script type="text/javascript" src="{% static 'categories/product.js' %}"></script>
+<script>
+    axios.get('http://127.0.0.1:8000/products/api/prod{{ pk }}/').then(renderData)
+</script>
+{% endblock %}
