@@ -12,16 +12,18 @@
     <div class="header">
         <div class="inside">
             <div class="welcome">
-                Добро пожаловать, UserName!
+                Добро пожаловать{% if request.user.is_authenticated %}, {{ user }}!{% endif %}
             </div>
             <div class="exit">
-                <a href="{% url 'products:list' %}">на главную</a>
+                <a href="{% url 'categories:list' %}">на главную</a>
             </div>
 
             <div class="options">
+                {% if request.user.is_authenticated %}
                 <a href="#"><div class="snap">Профиль</div></a>
                 <a href="{% url 'products:product' %}"><div class="snap">Товары</div></a>
                 <a href="{% url 'products:edit' %}"><div class="snap">Добавить новый товар</div></a>
+                {% endif %}
             </div>
 
         </div>

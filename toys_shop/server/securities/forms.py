@@ -24,15 +24,16 @@ class LoginForm(forms.Form):
 class RegisterForm(forms.ModelForm):
     password_confirm = forms.CharField(label='Confirm password', required=True, max_length=32,
                                        widget=forms.widgets.PasswordInput(attrs={'class': 'form-control'}))
-    #email = forms.CharField(label='Email-address', required=True, max_length=32,
-    #                        widget=forms.widgets.TextInput(attrs={'class': 'form-control'}))
+    email = forms.CharField(label='Email-address', required=True, max_length=32,
+                            widget=forms.widgets.TextInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
-        fields = ['username', 'password']
+        fields = ['username', 'password', 'email']
         widgets = {
             'username': forms.widgets.TextInput(attrs={'class': 'form-control'}),
-            'password': forms.widgets.PasswordInput(attrs={'class': 'form-control'})
+            'password': forms.widgets.PasswordInput(attrs={'class': 'form-control'}),
+            'email': forms.widgets.TextInput(attrs={'class': 'form-control'})
         }
 
     def clean_password_confirm(self):

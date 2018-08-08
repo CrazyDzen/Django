@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import FormView
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from . import forms
 
 
 class LoginView(FormView):
     template_name = 'securities/login.html'
-    success_url = reverse_lazy('products:list')
+    success_url = reverse_lazy('categories:list')
     form_class = forms.LoginForm
 
     def post(self, request):
@@ -20,7 +20,7 @@ class LoginView(FormView):
 
 class RegisterView(FormView):
     template_name = 'securities/register.html'
-    success_url = reverse_lazy('products:list')
+    success_url = reverse_lazy('categories:list')
     form_class = forms.RegisterForm
 
     def post(self, request):

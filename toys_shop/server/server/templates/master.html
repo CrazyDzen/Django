@@ -8,7 +8,8 @@
     <title>{% block page_title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
           integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'products/style.css' %}">
+    <link rel="stylesheet" href="{% static 'categories/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 </head>
 <body>
     <div class="header">
@@ -28,16 +29,15 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
             <div class="authorize">
-                {% if user != AnonymousUser %}
+                {% if request.user.is_authenticated %}
                 {{ user }}<br>
                 <a href="#">Профиль</a>/
                 <a href="{% url 'products:product' %}">Управление</a>/
-                <a href="#">Выход</a>
+                <a href="{% url 'securities:logout' %}">Выход</a>
                 {% else %}
                 <a href="{% url 'securities:login' %}">Вход</a> /
-                <a href="#">Регистрация</a>
+                <a href="{% url 'securities:register' %}">Регистрация</a>
                 {% endif %}
-
             </div>
             <div class="buyNow">
                 <h1>ПРЕДЛОЖЕНИЕ МЕСЯЦА</h1>
@@ -52,10 +52,9 @@
         <div class="mainInside">
             <div class="menu">
                 <div class="menuHeader">МЕНЮ</div>
-                <a href="{% url 'products:list' %}"><div class="link">Главная</div></a>
-                <a href="{% url 'products:toys' %}"><div class="link">Тедди</div></a>
+                <a href="{% url 'categories:list' %}"><div class="link">Главная</div></a>
                 {% for item in category %}
-                <a href="{% url 'products:group' item.id %}"><div class="link">{{ item.name }}</div></a>
+                <a href="{% url 'categories:group' item.id %}"><div class="link">{{ item.name }}</div></a>
                 {% endfor %}
                 <a href="#"><div class="link">Распродажа</div></a>
                 <a href="#"><div class="link">Контакты</div></a>
@@ -64,6 +63,7 @@
             <div class="products">
                 <div>
                     {% block page_content %}{% endblock %}
+                    {% block page_js %}{% endblock %}
                 </div>
             </div>
             <div class="brand">
